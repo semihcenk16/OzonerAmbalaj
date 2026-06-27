@@ -1,0 +1,106 @@
+<%- include('layout-head') %>
+<%- include('layout-sidebar') %>
+
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+  <h2 class="text-2xl font-bold text-gray-900">Ürün Yönetimi</h2>
+  <p class="text-gray-500 text-sm"><%= products.length %> ürün listeleniyor</p>
+</div>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+  <!-- Form -->
+  <div class="xl:col-span-1">
+    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm sticky top-6">
+      <h3 class="font-semibold text-gray-900 mb-4">
+        <%= editProduct ? 'Ürün Düzenle' : 'Yeni Ürün Ekle' %>
+      </h3>
+      <form method="POST" action="<%= editProduct ? '/admin/urunler/' + editProduct.id : '/admin/urunler' %>" enctype="multipart/form-data" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Ürün Adı *</label>
+          <input name="name" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary" value="<%= editProduct ? editProduct.name : '' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Açıklama</label>
+          <textarea name="description" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary"><%= editProduct ? editProduct.description : '' %></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Kategori *</label>
+          <input name="category" required list="categoryList" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary" value="<%= editProduct ? editProduct.category : '' %>"/>
+          <datalist id="categoryList">
+            <% categories.forEach(c => { %><option value="<%= c %>"><% }) %>
+            <option value="Ambalaj"><option value="Kimyasal"><option value="Ekipman">
+            <option value="Yedek Parça"><option value="İş Güvenliği"><option value="Set">
+            <option value="Konteyner"><option value="Profesyonel Seri"><option value="Yüzey Bakım">
+          </datalist>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Görsel URL</label>
+          <input name="image_url" type="url" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary" placeholder="https://..." value="<%= editProduct && editProduct.image_url && !editProduct.image_url.startsWith('/uploads') ? editProduct.image_url : '' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">veya Görsel Yükle</label>
+          <input name="image" type="file" accept="image/*" class="w-full text-sm"/>
+        </div>
+        <% if (editProduct && editProduct.image_url) { %>
+        <img src="<%= editProduct.image_url %>" alt="" class="w-full h-32 object-contain bg-gray-50 rounded-lg border"/>
+        <% } %>
+        <div class="flex gap-2">
+          <button type="submit" class="flex-1 bg-primary text-white py-2.5 rounded-lg font-medium text-sm hover:opacity-90">
+            <%= editProduct ? 'Güncelle' : 'Ürün Ekle' %>
+          </button>
+          <% if (editProduct) { %>
+          <a href="/admin/urunler" class="px-4 py-2.5 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">İptal</a>
+          <% } %>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Product List -->
+  <div class="xl:col-span-2">
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 border-b border-gray-200">
+            <tr>
+              <th class="text-left px-4 py-3 font-medium text-gray-600">Görsel</th>
+              <th class="text-left px-4 py-3 font-medium text-gray-600">Ürün</th>
+              <th class="text-left px-4 py-3 font-medium text-gray-600">Kategori</th>
+              <th class="text-right px-4 py-3 font-medium text-gray-600">İşlemler</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <% products.forEach(p => { %>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3">
+                <img src="<%= p.image_url %>" alt="" class="w-12 h-12 object-contain bg-gray-50 rounded border"/>
+              </td>
+              <td class="px-4 py-3">
+                <p class="font-medium text-gray-900"><%= p.name %></p>
+                <p class="text-gray-400 text-xs truncate max-w-xs"><%= p.description %></p>
+              </td>
+              <td class="px-4 py-3"><span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs"><%= p.category %></span></td>
+              <td class="px-4 py-3 text-right">
+                <div class="flex items-center justify-end gap-2">
+                  <a href="/urunler/<%= p.slug %>" target="_blank" class="p-1.5 text-gray-400 hover:text-primary" title="Görüntüle">
+                    <span class="material-symbols-outlined text-lg">visibility</span>
+                  </a>
+                  <a href="/admin/urunler/duzenle/<%= p.id %>" class="p-1.5 text-gray-400 hover:text-blue-600" title="Düzenle">
+                    <span class="material-symbols-outlined text-lg">edit</span>
+                  </a>
+                  <form method="POST" action="/admin/urunler/<%= p.id %>/sil" class="inline" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?')">
+                    <button type="submit" class="p-1.5 text-gray-400 hover:text-red-600" title="Sil">
+                      <span class="material-symbols-outlined text-lg">delete</span>
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('layout-foot') %>

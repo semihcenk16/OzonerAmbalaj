@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "name": "Çöp Torbaları",
+    "slug": "cop-torbalari",
+    "group": "Ambalaj Ürünleri",
+    "description": "Mini boydan endüstriyel battal boya kadar her hacme uygun dayanıklı torbalar.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_1.webp",
+    "sort_order": 1,
+    "product_count": 49
+  },
+  {
+    "id": 2,
+    "name": "Deterjan Grubu",
+    "slug": "deterjan-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Yüzey temizleyiciler, yağ çözücüler ve genel temizlik kimyasalları.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_2.webp",
+    "sort_order": 2,
+    "product_count": 44
+  },
+  {
+    "id": 3,
+    "name": "Mop Grubu",
+    "slug": "mop-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Mikrofiber, pamuklu ve endüstriyel mop çeşitleri ile etkili zemin temizliği.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_3.webp",
+    "sort_order": 3,
+    "product_count": 45
+  },
+  {
+    "id": 4,
+    "name": "Sap Çeşitleri",
+    "slug": "sap-cesitleri",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Alüminyum, teleskopik ve ahşap saplar ile ergonomik kullanım imkanı.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_4.webp",
+    "sort_order": 4,
+    "product_count": 10
+  },
+  {
+    "id": 5,
+    "name": "Eldiven Grubu",
+    "slug": "eldiven-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Nitril, lateks ve ev işleri için özel tasarlanmış koruyucu eldivenler.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_5.webp",
+    "sort_order": 5,
+    "product_count": 7
+  },
+  {
+    "id": 6,
+    "name": "Faraş Grubu",
+    "slug": "faras-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Hazneli, saplı ve pratik faraş takımları ile hijyenik çözüm.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_6.webp",
+    "sort_order": 6,
+    "product_count": 4
+  },
+  {
+    "id": 7,
+    "name": "Sünger ve Tel Grubu",
+    "slug": "sunger-ve-tel-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Zorlu kirler için bulaşık telleri ve dayanıklı yüzey süngerleri.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_7.webp",
+    "sort_order": 7,
+    "product_count": 7
+  },
+  {
+    "id": 8,
+    "name": "Yersil Grubu",
+    "slug": "yersil-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Farklı genişliklerde, endüstriyel tip kauçuk yersil çeşitleri.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_8.webp",
+    "sort_order": 8,
+    "product_count": 6
+  },
+  {
+    "id": 9,
+    "name": "Camsil Grubu",
+    "slug": "camsil-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "İz bırakmayan cam temizleme aparatları ve yedek lastikleri.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_9.webp",
+    "sort_order": 9,
+    "product_count": 17
+  },
+  {
+    "id": 10,
+    "name": "Fırça Çeşitleri",
+    "slug": "firca-cesitleri",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Yumuşak ve sert kıllı yer fırçaları, süpürgeler ve detay fırçaları.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_10.webp",
+    "sort_order": 10,
+    "product_count": 10
+  },
+  {
+    "id": 11,
+    "name": "Temizlik Setleri",
+    "slug": "temizlik-setleri",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Kova, mop ve sıkma aparatından oluşan profesyonel setler.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_11.webp",
+    "sort_order": 11,
+    "product_count": 9
+  },
+  {
+    "id": 12,
+    "name": "Kova Grubu",
+    "slug": "kova-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "description": "Ölçülü, sağlam ve ergonomik endüstriyel kova çeşitleri.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_12.webp",
+    "sort_order": 12,
+    "product_count": 31
+  },
+  {
+    "id": 13,
+    "name": "Endüstriyel Aparat Grubu",
+    "slug": "endustriyel-aparat-grubu",
+    "group": "Aparatlar",
+    "description": "Kağıt havlu dispanserleri, sabunluklar ve hijyen üniteleri.",
+    "image_url": "https://ozonerambalaj.com/Content/img/kategori_13.webp",
+    "sort_order": 13,
+    "product_count": 21
+  }
+]

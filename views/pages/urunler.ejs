@@ -1,0 +1,92 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="max-w-container-max mx-auto px-margin-desktop py-12">
+  <div class="mb-12">
+    <h1 class="font-headline-xl text-headline-xl text-primary mb-4 tracking-tight">Ürün Kategorileri</h1>
+    <p class="font-body-lg text-body-lg text-secondary max-w-2xl">
+      1988'den beri endüstriyel temizlik ve ambalaj çözümlerinde kalite ve güvenin adresi.
+    </p>
+    <% if (searchQuery) { %>
+    <p class="mt-4 text-on-surface-variant">"<strong><%= searchQuery %></strong>" için <%= products.length %> sonuç bulundu.</p>
+    <% } %>
+    <% if (filterCategory) { %>
+    <p class="mt-4 text-on-surface-variant">Kategori: <strong><%= filterCategory %></strong> (<%= products.length %> ürün) — <a href="/urunler" class="text-primary hover:underline">Tüm kategorilere dön</a></p>
+    <% } %>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop">
+    <aside class="hidden lg:block lg:col-span-3">
+      <div class="sidebar-sticky flex flex-col gap-2 pr-4">
+        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Kategoriler</h3>
+        <a class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container transition-colors group <%= !filterCategory && !searchQuery ? 'bg-surface-container text-primary font-bold' : '' %>" href="/urunler">
+          <span class="font-label-md">Tüm Kategoriler</span>
+          <span class="material-symbols-outlined text-sm">chevron_right</span>
+        </a>
+        <% categoryList.forEach(cat => { %>
+        <a class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container transition-colors group <%= filterCategory === cat.name ? 'bg-surface-container text-primary font-bold' : '' %>" href="/urunler?kategori=<%= encodeURIComponent(cat.name) %>">
+          <span class="font-label-md text-on-surface-variant group-hover:text-primary"><%= cat.name %></span>
+          <span class="text-xs text-outline"><%= cat.product_count %></span>
+        </a>
+        <% }) %>
+      </div>
+    </aside>
+
+    <div class="lg:col-span-9">
+      <% if (showCategories) { %>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter-desktop">
+        <% categoryList.forEach(cat => { %>
+        <a href="/urunler?kategori=<%= encodeURIComponent(cat.name) %>" class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg product-card-hover transition-all duration-300 block" id="<%= cat.slug %>">
+          <div class="aspect-square bg-surface-industrial rounded-lg mb-6 overflow-hidden flex items-center justify-center">
+            <img class="w-full h-full object-contain p-4" alt="<%= cat.name %>" src="<%= cat.image_url %>" loading="lazy"/>
+          </div>
+          <span class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2 block"><%= cat.group %></span>
+          <h2 class="font-headline-md text-headline-md text-on-surface mb-3"><%= cat.name %></h2>
+          <p class="font-body-md text-body-md text-secondary mb-4"><%= cat.description %></p>
+          <span class="flex items-center text-primary font-label-md gap-2">
+            <%= cat.product_count %> Ürün <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </span>
+        </a>
+        <% }) %>
+      </div>
+      <% } else if (products.length === 0) { %>
+      <div class="text-center py-20 bg-white rounded-xl border border-outline-variant">
+        <span class="material-symbols-outlined text-6xl text-outline mb-4">inventory_2</span>
+        <p class="font-headline-md text-on-surface-variant">Ürün bulunamadı.</p>
+        <a href="/urunler" class="text-primary font-bold mt-4 inline-block hover:underline">Tüm kategorilere dön</a>
+      </div>
+      <% } else { %>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter-desktop">
+        <% products.forEach(product => { %>
+        <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg product-card-hover transition-all duration-300">
+          <div class="aspect-square bg-surface-industrial rounded-lg mb-6 overflow-hidden flex items-center justify-center">
+            <img class="w-full h-full object-contain p-4" alt="<%= product.name %>" src="<%= product.image_url %>" loading="lazy"/>
+          </div>
+          <span class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2 block"><%= product.category %></span>
+          <h2 class="font-headline-md text-headline-md text-on-surface mb-3"><%= product.short_name || product.name %></h2>
+          <p class="font-body-md text-body-md text-secondary mb-6"><%= product.description %></p>
+          <a class="flex items-center text-primary font-label-md gap-2 group/btn" href="/urunler/<%= product.slug %>">
+            Detaylı Bilgi <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+          </a>
+        </div>
+        <% }) %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <section class="mt-24 py-16 text-center border-t border-outline-variant">
+    <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Özel Fiyat ve Teklif İçin</h3>
+    <p class="font-body-lg text-secondary mb-10 max-w-2xl mx-auto">Toptan alımlarda size özel çözümler sunuyoruz.</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <a class="flex items-center justify-center gap-3 bg-surface-container px-8 py-4 rounded-lg border border-outline font-label-md hover:bg-surface transition-all" href="tel:05355041939">
+        <span class="material-symbols-outlined text-primary">call</span> 0 535 504 19 39
+      </a>
+      <a class="flex items-center justify-center gap-3 bg-primary text-on-primary px-10 py-4 rounded-lg font-label-md hover:opacity-90 transition-all" href="mailto:satis@ozonerambalaj.com">
+        <span class="material-symbols-outlined">mail</span> Teklif Alın
+      </a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

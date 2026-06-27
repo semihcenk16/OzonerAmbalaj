@@ -1,0 +1,140 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<% if (announcements && announcements.length) { %>
+<section class="bg-primary text-white py-3 overflow-hidden">
+  <div class="max-w-container-max mx-auto px-margin-desktop flex items-center gap-4">
+    <span class="material-symbols-outlined shrink-0">campaign</span>
+    <div id="announcementTicker" class="flex-1 overflow-hidden">
+      <% announcements.forEach((a, i) => { %>
+      <p class="announcement-item <%= i === 0 ? '' : 'hidden' %> font-label-md"><strong><%= a.title %>:</strong> <%= a.content %></p>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- Hero Slider -->
+<section class="relative h-[280px] sm:h-[360px] md:h-[400px] lg:h-[450px] overflow-hidden bg-gray-50">
+  <div class="relative w-full h-full" id="hero-slider">
+    <% sliders.forEach((slide, i) => { %>
+    <div class="slide absolute inset-0 w-full h-full transition-opacity duration-1000 <%= i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' %>">
+      <div class="absolute inset-0 w-full h-full bg-gray-50">
+        <img
+          class="w-full h-full object-contain object-center"
+          alt="<%= slide.title %>"
+          src="<%= slide.image_url %>"
+          loading="<%= i === 0 ? 'eager' : 'lazy' %>"
+        />
+      </div>
+      <div class="absolute inset-0 bg-black/20 z-10 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-0 z-20 flex items-center">
+        <div class="w-full max-w-container-max mx-auto px-margin-desktop">
+          <div class="max-w-xl lg:max-w-2xl text-white">
+            <% if (slide.badge) { %>
+            <span class="inline-block bg-primary px-3 py-1 mb-3 sm:mb-4 text-xs sm:text-label-md font-bold tracking-widest uppercase rounded-sm shadow-sm"><%= slide.badge %></span>
+            <% } %>
+            <h1 class="font-headline-xl text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-2 sm:mb-4 leading-tight drop-shadow-sm"><%= slide.title %></h1>
+            <p class="font-body-lg text-sm sm:text-base md:text-lg mb-4 sm:mb-6 opacity-95 line-clamp-2 md:line-clamp-3 drop-shadow-sm"><%= slide.description %></p>
+            <div class="flex flex-wrap gap-3 sm:gap-4">
+              <% if (slide.button_link) { %>
+              <a href="<%= slide.button_link %>" class="bg-primary hover:bg-primary-container text-white px-5 py-2.5 sm:px-8 sm:py-4 rounded text-sm sm:text-base font-bold transition-all shadow-md"><%= slide.button_text || 'Ürünleri Keşfet' %></a>
+              <% } %>
+              <a href="/iletisim" class="border-2 border-white hover:bg-white/10 text-white px-5 py-2.5 sm:px-8 sm:py-4 rounded text-sm sm:text-base font-bold transition-all">Detaylı Bilgi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% if (sliders.length > 1) { %>
+  <div id="slider-dots" class="absolute bottom-4 sm:bottom-5 left-margin-desktop z-30 flex space-x-2">
+    <% sliders.forEach((_, i) => { %>
+    <button data-slide="<%= i %>" class="slider-dot w-10 sm:w-12 h-1 cursor-pointer transition-colors <%= i === 0 ? 'bg-primary' : 'bg-white/40' %>" aria-label="Slayt <%= i + 1 %>"></button>
+    <% }) %>
+  </div>
+  <% } %>
+</section>
+
+<!-- About Brief -->
+<section class="py-24 bg-white">
+  <div class="max-w-container-max mx-auto px-margin-desktop">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-desktop items-center">
+      <div>
+        <h2 class="font-headline-md text-headline-md text-primary mb-2">1988'den Bugüne</h2>
+        <h3 class="font-headline-lg text-headline-lg mb-8">Tecrübe ile Şekillenen Gelecek</h3>
+        <div class="space-y-6 text-on-surface-variant font-body-md leading-relaxed">
+          <p>1988 yılından bu yana aile büyüklerimizin gıda endüstrisi, mobilya sanayi ve inşaat sektörlerinde attığı temellerden kazandığımız tecrübe ile OZONER markasını yarattık.</p>
+          <p>Endüstriyel ambalaj ve temizlik ekipmanları alanında Bursa'nın öncü kuruluşu olarak, sürdürülebilir kaliteyi ve müşteri memnuniyetini işimizin merkezine koyuyoruz.</p>
+        </div>
+        <div class="mt-10 grid grid-cols-3 gap-4">
+          <div class="border-l-4 border-primary pl-4">
+            <div class="font-headline-md text-headline-md font-bold text-primary">35+</div>
+            <div class="text-label-sm text-on-surface-variant">Yıllık Tecrübe</div>
+          </div>
+          <div class="border-l-4 border-primary pl-4">
+            <div class="font-headline-md text-headline-md font-bold text-primary"><%= categories.length %>+</div>
+            <div class="text-label-sm text-on-surface-variant">Ürün Kategorisi</div>
+          </div>
+          <div class="border-l-4 border-primary pl-4">
+            <div class="font-headline-md text-headline-md font-bold text-primary">1000+</div>
+            <div class="text-label-sm text-on-surface-variant">Mutlu Müşteri</div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <img class="rounded-xl industrial-shadow w-full h-[400px] md:h-[500px] object-cover" alt="OZONER ürünleri" src="https://lh3.googleusercontent.com/aida/AP1WRLuLS3C1uEV3hxQx0l2RtkQTuMqo2Sqk-7O2QitBOv7yTyfyOIyUHUhFnKv6gZFRAv3fyGZIPPKPZb800muSR9DZfdHaAeMO_kYElLy7lmYeyniewgfk_4qUgUb3dVIAy_zHDuUduY9uV-U-rgIVa4t2cQe1FBsavs8bvlAUV2RhUyt-4CgRkMFyHsR1Z5M3hx11k1Gr2DV4T-J9zqpXyTnOrJv8uCYT2HFLl0Qs6w8Ae0qKYX4bJ7JAHjA"/>
+        <div class="absolute bottom-6 right-6 bg-white p-6 rounded shadow-xl border-t-4 border-primary">
+          <p class="font-headline-md font-bold text-primary">Kalite Odaklı</p>
+          <p class="text-label-md text-on-surface-variant">Endüstriyel Standartlar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-24 bg-surface-industrial">
+  <div class="max-w-container-max mx-auto px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+      <div>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">Ürün Gruplarımız</h2>
+        <p class="text-on-surface-variant mt-2 font-body-md">İşletmeniz için profesyonel ambalaj ve temizlik çözümleri.</p>
+      </div>
+      <a class="text-primary font-bold flex items-center gap-2 hover:underline mt-4 md:mt-0" href="/urunler">
+        Tüm Ürünleri Gör <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <% categories.forEach(cat => { %>
+      <a href="/urunler?kategori=<%= encodeURIComponent(cat.name) %>" class="group relative overflow-hidden bg-white rounded-xl border border-outline-variant industrial-shadow transition-all duration-500 hover:-translate-y-2 block">
+        <div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+        <img class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="<%= cat.name %>" src="<%= cat.image_url %>" loading="lazy"/>
+        <div class="absolute bottom-0 left-0 p-6 z-20">
+          <span class="text-white/70 text-label-sm uppercase tracking-widest"><%= cat.group %></span>
+          <h4 class="font-headline-md text-white mb-2"><%= cat.name %></h4>
+          <span class="text-white font-bold text-label-md flex items-center gap-1">İncele <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative py-24 bg-primary overflow-hidden">
+  <div class="max-w-container-max mx-auto px-margin-desktop text-center relative z-10">
+    <h2 class="font-headline-lg text-headline-lg text-white mb-6">Detaylı Bilgi ve Kurumsal Çözümler İçin</h2>
+    <p class="text-primary-fixed text-body-lg mb-12 max-w-3xl mx-auto">Size özel fiyat teklifleri ve lojistik çözümlerimiz için uzman ekibimizle iletişime geçin.</p>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+      <a class="bg-white text-primary px-10 py-4 rounded-lg font-bold flex items-center gap-4 hover:bg-surface-bright transition-all shadow-lg" href="tel:05355041939">
+        <span class="material-symbols-outlined">call</span> 0 535 504 19 39
+      </a>
+      <a class="border-2 border-white text-white px-10 py-4 rounded-lg font-bold hover:bg-white/10 transition-all" href="/iletisim">İletişime Geç</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

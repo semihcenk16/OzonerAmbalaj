@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="max-w-container-max mx-auto px-margin-desktop py-12">
+  <nav class="mb-8 text-label-md text-on-surface-variant">
+    <a href="/" class="hover:text-primary">Anasayfa</a> /
+    <a href="/urunler" class="hover:text-primary">Ürünler</a> /
+    <span class="text-primary font-bold"><%= product.name %></span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white p-8 md:p-12 rounded-xl border border-outline-variant industrial-shadow">
+    <div class="bg-surface-industrial rounded-xl overflow-hidden flex items-center justify-center p-8">
+      <img class="max-h-[500px] w-full object-contain" alt="<%= product.name %>" src="<%= product.image_url %>"/>
+    </div>
+    <div>
+      <span class="font-label-sm text-primary uppercase tracking-widest"><%= product.category %></span>
+      <h1 class="font-headline-xl text-3xl md:text-headline-xl text-on-surface mt-2 mb-6"><%= product.short_name || product.name %></h1>
+      <% if (product.category_group) { %>
+      <p class="text-label-sm text-primary uppercase tracking-widest mb-2"><%= product.category_group %> · <%= product.category %></p>
+      <% } %>
+      <p class="font-body-lg text-on-surface-variant leading-relaxed mb-8"><%= product.description %></p>
+      <div class="flex flex-wrap gap-4">
+        <a href="tel:05355041939" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold flex items-center gap-2 hover:opacity-90 transition-all">
+          <span class="material-symbols-outlined">call</span> Teklif Al
+        </a>
+        <a href="/iletisim" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+          İletişime Geç
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <% if (related.length) { %>
+  <section class="mt-20">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">Benzer Ürünler</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <% related.forEach(p => { %>
+      <a href="/urunler/<%= p.slug %>" class="bg-white border border-outline-variant p-6 rounded-lg product-card-hover transition-all block">
+        <img class="w-full h-48 object-contain bg-surface-industrial rounded-lg mb-4 p-4" alt="<%= p.name %>" src="<%= p.image_url %>"/>
+        <h3 class="font-headline-md text-on-surface"><%= p.name %></h3>
+        <span class="text-primary font-label-md mt-2 inline-flex items-center gap-1">İncele <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+      </a>
+      <% }) %>
+    </div>
+  </section>
+  <% } %>
+</main>
+
+<%- include('../partials/footer') %>

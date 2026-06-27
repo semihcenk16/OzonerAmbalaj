@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Çöp Torbaları",
+    "slug": "cop-torbaları",
+    "group": "Ambalaj Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 49
+  },
+  {
+    "name": "Deterjan Grubu",
+    "slug": "deterjan-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 44
+  },
+  {
+    "name": "Mop Grubu",
+    "slug": "mop-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 45
+  },
+  {
+    "name": "Sap Çeşitleri",
+    "slug": "sap-cesitleri",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 10
+  },
+  {
+    "name": "Eldiven Grubu",
+    "slug": "eldiven-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 7
+  },
+  {
+    "name": "Faraş Grubu",
+    "slug": "faras-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 4
+  },
+  {
+    "name": "Sünger ve Tel Grubu",
+    "slug": "sunger-ve-tel-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 7
+  },
+  {
+    "name": "Yersil Grubu",
+    "slug": "yersil-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 6
+  },
+  {
+    "name": "Camsil Grubu",
+    "slug": "camsil-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 17
+  },
+  {
+    "name": "Fırça Çeşitleri",
+    "slug": "firca-cesitleri",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 10
+  },
+  {
+    "name": "Temizlik Setleri",
+    "slug": "temizlik-setleri",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 9
+  },
+  {
+    "name": "Kova Grubu",
+    "slug": "kova-grubu",
+    "group": "Endüstriyel Temizlik Ürünleri",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 31
+  },
+  {
+    "name": "Endüstriyel Aparat Grubu",
+    "slug": "endustriyel-aparat-grubu",
+    "group": "Aparatlar",
+    "image_url": "https://ozonerambalaj.com/Content/img/ozoner-logo.webp",
+    "product_count": 21
+  }
+]

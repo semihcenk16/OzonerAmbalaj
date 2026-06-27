@@ -1,0 +1,95 @@
+<%- include('layout-head') %>
+<%- include('layout-sidebar') %>
+
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Dashboard</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-500 text-sm">Toplam Ürün</p>
+        <p class="text-3xl font-bold text-primary mt-1"><%= stats.products %></p>
+      </div>
+      <span class="material-symbols-outlined text-4xl text-primary/30">inventory_2</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-500 text-sm">Slider Slaytları</p>
+        <p class="text-3xl font-bold text-primary mt-1"><%= stats.sliders %></p>
+      </div>
+      <span class="material-symbols-outlined text-4xl text-primary/30">view_carousel</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-500 text-sm">Mesajlar</p>
+        <p class="text-3xl font-bold text-primary mt-1"><%= stats.messages %></p>
+      </div>
+      <span class="material-symbols-outlined text-4xl text-primary/30">mail</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-500 text-sm">Duyurular</p>
+        <p class="text-3xl font-bold text-primary mt-1"><%= stats.announcements %></p>
+      </div>
+      <span class="material-symbols-outlined text-4xl text-primary/30">campaign</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-500 text-sm">Çözüm Ortakları</p>
+        <p class="text-3xl font-bold text-primary mt-1"><%= stats.partners %></p>
+      </div>
+      <span class="material-symbols-outlined text-4xl text-primary/30">handshake</span>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <h3 class="font-semibold text-gray-900 mb-4">Hızlı İşlemler</h3>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="/admin/urunler" class="flex items-center gap-2 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">add_box</span> Yeni Ürün
+      </a>
+      <a href="/admin/slider" class="flex items-center gap-2 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">add_photo_alternate</span> Slider Ekle
+      </a>
+      <a href="/admin/duyurular" class="flex items-center gap-2 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">add_alert</span> Duyuru Ekle
+      </a>
+      <a href="/admin/cozum-ortaklari" class="flex items-center gap-2 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">handshake</span> Ortak Ekle
+      </a>
+      <a href="/" target="_blank" class="flex items-center gap-2 p-4 bg-gray-50 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors">
+        <span class="material-symbols-outlined">visibility</span> Siteyi Gör
+      </a>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <h3 class="font-semibold text-gray-900 mb-4">Son Mesajlar</h3>
+    <% if (recentMessages.length === 0) { %>
+    <p class="text-gray-400 text-sm">Henüz mesaj yok.</p>
+    <% } else { %>
+    <ul class="space-y-3">
+      <% recentMessages.forEach(msg => { %>
+      <li class="border-b border-gray-100 pb-3 last:border-0">
+        <p class="font-medium text-sm"><%= msg.name %> <span class="text-gray-400 font-normal">&lt;<%= msg.email %>&gt;</span></p>
+        <p class="text-gray-500 text-sm truncate"><%= msg.message %></p>
+        <p class="text-gray-300 text-xs mt-1"><%= msg.created_at %></p>
+      </li>
+      <% }) %>
+    </ul>
+  <a href="/admin/mesajlar" class="text-primary text-sm font-medium mt-4 inline-block hover:underline">Tüm mesajları gör →</a>
+    <% } %>
+  </div>
+</div>
+
+<%- include('layout-foot') %>

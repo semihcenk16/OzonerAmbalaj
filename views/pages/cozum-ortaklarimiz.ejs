@@ -1,0 +1,126 @@
+<%- include('../partials/head') %>
+<style>
+  .partner-rod {
+    height: 14px;
+    background: linear-gradient(180deg, #6b7280 0%, #4b5563 50%, #374151 100%);
+    border-radius: 9999px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .partner-pennant {
+    position: relative;
+    width: 9.5rem;
+    background: linear-gradient(180deg, #1e4a9e 0%, #002a73 100%);
+    padding: 0.5rem 0.5rem 2rem;
+    margin-top: -2px;
+    filter: drop-shadow(0 8px 12px rgba(0, 42, 115, 0.35));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.25rem), 50% 100%, 0 calc(100% - 1.25rem));
+  }
+  @media (min-width: 768px) {
+    .partner-pennant { width: 11rem; padding-bottom: 2.25rem; }
+  }
+  .partner-logo-box {
+    background: #fff;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem;
+    margin-bottom: 0.5rem;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+  }
+  .partner-logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .partner-name {
+    color: #fff;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.25;
+    padding: 0 0.25rem 0.5rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    .partner-name { font-size: 0.875rem; }
+  }
+</style>
+<%- include('../partials/header') %>
+
+<main class="bg-surface-industrial">
+  <section class="relative h-[280px] md:h-[320px] flex items-center overflow-hidden bg-primary">
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 32px 32px;"></div>
+    <div class="relative px-margin-desktop max-w-container-max mx-auto w-full">
+      <span class="inline-block bg-white/10 text-white px-4 py-1 font-label-md uppercase tracking-widest mb-4 rounded-sm">GÜVENİLİR İŞ ORTAKLIKLARI</span>
+      <h1 class="font-headline-xl text-3xl md:text-headline-xl text-white mb-4">Çözüm Ortaklarımız</h1>
+      <p class="font-body-lg text-primary-fixed max-w-2xl leading-relaxed">
+        1988'den bu yana sektörün önde gelen markalarıyla güçlü iş birlikleri kuruyoruz.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 px-margin-desktop max-w-container-max mx-auto">
+    <% if (partners.length === 0) { %>
+    <div class="text-center py-20 bg-white rounded-xl border border-outline-variant">
+      <span class="material-symbols-outlined text-6xl text-outline mb-4">handshake</span>
+      <p class="font-headline-md text-on-surface-variant">Henüz çözüm ortağı eklenmemiş.</p>
+    </div>
+    <% } else {
+      const row1 = partners.slice(0, 5);
+      const row2 = partners.slice(5, 10);
+      const row3 = partners.slice(10);
+      const rows = [row1, row2, row3].filter(r => r.length > 0);
+    %>
+    <div class="space-y-14 md:space-y-20">
+      <% rows.forEach((row, rowIndex) => { %>
+      <div class="relative <%= row.length <= 2 ? 'max-w-xl mx-auto' : '' %>">
+        <div class="partner-rod w-full"></div>
+        <div class="flex flex-wrap justify-center items-start gap-3 sm:gap-5 md:gap-8 lg:gap-10 pt-1">
+          <% row.forEach(partner => {
+            const slug = (partner.slug || partner.name).toLowerCase()
+              .replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s')
+              .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c')
+              .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            const localLogo = '/images/partners/' + slug + '.webp';
+          %>
+          <div class="flex flex-col items-center">
+            <div class="partner-pennant">
+              <div class="partner-logo-box">
+                <img
+                  src="<%= partner.logo_url || localLogo %>"
+                  alt="<%= partner.name %>"
+                  loading="lazy"
+                  onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden');this.nextElementSibling.classList.add('flex')"
+                />
+                <span class="hidden w-full h-full items-center justify-center text-primary font-bold text-lg"><%= partner.name.charAt(0) %></span>
+              </div>
+              <p class="partner-name"><%= partner.name %></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </section>
+
+  <section class="bg-white py-16 border-t border-outline-variant">
+    <div class="px-margin-desktop max-w-container-max mx-auto text-center">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4">İş Ortağımız Olmak İster misiniz?</h2>
+      <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8">
+        OZONER ailesine katılmak ve distribütörlük fırsatlarını değerlendirmek için bizimle iletişime geçin.
+      </p>
+      <a href="/iletisim" class="inline-flex items-center gap-2 bg-primary text-on-primary px-10 py-4 rounded-lg font-bold hover:bg-primary-container transition-all">
+        İletişime Geç <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

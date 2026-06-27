@@ -1,0 +1,89 @@
+<%- include('layout-head') %>
+<%- include('layout-sidebar') %>
+
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Slider Yönetimi</h2>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+  <div class="xl:col-span-1">
+    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm sticky top-6">
+      <h3 class="font-semibold text-gray-900 mb-4"><%= editSlider ? 'Slayt Düzenle' : 'Yeni Slayt Ekle' %></h3>
+      <form method="POST" action="<%= editSlider ? '/admin/slider/' + editSlider.id : '/admin/slider' %>" enctype="multipart/form-data" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Başlık *</label>
+          <input name="title" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="<%= editSlider ? editSlider.title : '' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Rozet Metni</label>
+          <input name="badge" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="<%= editSlider ? editSlider.badge : '' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Alt Başlık</label>
+          <input name="subtitle" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="<%= editSlider ? editSlider.subtitle : '' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Açıklama</label>
+          <textarea name="description" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"><%= editSlider ? editSlider.description : '' %></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Buton Metni</label>
+          <input name="button_text" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="<%= editSlider ? editSlider.button_text : 'Ürünleri Keşfet' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Buton Linki</label>
+          <input name="button_link" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="<%= editSlider ? editSlider.button_link : '/urunler' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Görsel URL</label>
+          <input name="image_url" type="url" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value="<%= editSlider && editSlider.image_url && !editSlider.image_url.startsWith('/uploads') ? editSlider.image_url : '' %>"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">veya Görsel Yükle</label>
+          <input name="image" type="file" accept="image/*" class="w-full text-sm"/>
+        </div>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="checkbox" name="is_active" value="1" <%= !editSlider || editSlider.is_active ? 'checked' : '' %> class="rounded text-primary"/>
+          Aktif
+        </label>
+        <% if (editSlider && editSlider.image_url) { %>
+        <img src="<%= editSlider.image_url %>" alt="" class="w-full h-24 object-cover rounded-lg border"/>
+        <% } %>
+        <div class="flex gap-2">
+          <button type="submit" class="flex-1 bg-primary text-white py-2.5 rounded-lg font-medium text-sm"><%= editSlider ? 'Güncelle' : 'Slayt Ekle' %></button>
+          <% if (editSlider) { %><a href="/admin/slider" class="px-4 py-2.5 border rounded-lg text-sm">İptal</a><% } %>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="xl:col-span-2 space-y-4">
+    <% sliders.forEach(slide => { %>
+    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col sm:flex-row">
+      <img src="<%= slide.image_url %>" alt="" class="w-full sm:w-48 h-32 sm:h-auto object-cover"/>
+      <div class="flex-1 p-4">
+        <div class="flex items-start justify-between gap-2">
+          <div>
+            <span class="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded"><%= slide.badge || 'Slayt' %></span>
+            <h4 class="font-semibold text-gray-900 mt-1"><%= slide.title %></h4>
+            <p class="text-gray-500 text-sm mt-1 line-clamp-2"><%= slide.description %></p>
+          </div>
+          <span class="text-xs px-2 py-1 rounded <%= slide.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500' %>">
+            <%= slide.is_active ? 'Aktif' : 'Pasif' %>
+          </span>
+        </div>
+        <div class="flex gap-2 mt-4">
+          <a href="/admin/slider/duzenle/<%= slide.id %>" class="text-sm text-blue-600 hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">edit</span> Düzenle
+          </a>
+          <form method="POST" action="/admin/slider/<%= slide.id %>/sil" class="inline" onsubmit="return confirm('Bu slaytı silmek istediğinize emin misiniz?')">
+            <button type="submit" class="text-sm text-red-600 hover:underline flex items-center gap-1">
+              <span class="material-symbols-outlined text-sm">delete</span> Sil
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('layout-foot') %>

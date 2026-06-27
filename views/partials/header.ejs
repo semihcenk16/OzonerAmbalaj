@@ -1,0 +1,33 @@
+<header class="bg-surface sticky top-0 w-full z-50 border-b border-outline-variant shadow-sm hover:shadow-md transition-shadow duration-300">
+  <nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+    <a href="/" class="text-headline-lg font-headline-lg font-black text-on-surface uppercase tracking-tight">OZONER</a>
+
+    <button id="mobileMenuBtn" class="lg:hidden material-symbols-outlined text-primary text-3xl" aria-label="Menü">menu</button>
+
+    <div id="mainNav" class="hidden lg:flex items-center space-x-8">
+      <a class="font-label-md text-label-md transition-colors duration-200 <%= activePage === 'home' ? 'text-primary border-b-2 border-primary font-bold pb-1' : 'text-on-surface-variant font-medium hover:text-primary' %>" href="/">Anasayfa</a>
+      <a class="font-label-md text-label-md transition-colors duration-200 <%= activePage === 'about' ? 'text-primary border-b-2 border-primary font-bold pb-1' : 'text-on-surface-variant font-medium hover:text-primary' %>" href="/hakkimizda">Hakkımızda</a>
+      <a class="font-label-md text-label-md transition-colors duration-200 <%= activePage === 'products' ? 'text-primary border-b-2 border-primary font-bold pb-1' : 'text-on-surface-variant font-medium hover:text-primary' %>" href="/urunler">Ürünler</a>
+      <a class="font-label-md text-label-md transition-colors duration-200 <%= activePage === 'partners' ? 'text-primary border-b-2 border-primary font-bold pb-1' : 'text-on-surface-variant font-medium hover:text-primary' %>" href="/cozum-ortaklarimiz">Çözüm Ortaklarımız</a>
+      <a class="font-label-md text-label-md transition-colors duration-200 <%= activePage === 'contact' ? 'text-primary border-b-2 border-primary font-bold pb-1' : 'text-on-surface-variant font-medium hover:text-primary' %>" href="/iletisim">İletişim</a>
+    </div>
+
+    <div class="hidden lg:flex items-center space-x-6">
+      <form action="/urunler" method="GET" class="flex items-center bg-surface-container rounded-lg px-3 py-1.5 border border-outline-variant">
+        <span class="material-symbols-outlined text-outline">search</span>
+        <input name="q" class="bg-transparent border-none focus:ring-0 text-label-md ml-2 w-32" placeholder="Ürün ara..." type="text"/>
+      </form>
+      <a href="tel:05355041939" class="material-symbols-outlined text-primary hover:scale-110 transition-transform">call</a>
+      <a href="/iletisim" class="bg-primary text-on-primary px-6 py-2.5 rounded font-bold font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95">Katalog İste</a>
+    </div>
+  </nav>
+
+  <div id="mobileNav" class="hidden lg:hidden border-t border-outline-variant bg-surface px-margin-desktop py-4 space-y-3">
+    <a class="block font-label-md py-2 <%= activePage === 'home' ? 'text-primary font-bold' : 'text-on-surface-variant' %>" href="/">Anasayfa</a>
+    <a class="block font-label-md py-2 <%= activePage === 'about' ? 'text-primary font-bold' : 'text-on-surface-variant' %>" href="/hakkimizda">Hakkımızda</a>
+    <a class="block font-label-md py-2 <%= activePage === 'products' ? 'text-primary font-bold' : 'text-on-surface-variant' %>" href="/urunler">Ürünler</a>
+    <a class="block font-label-md py-2 <%= activePage === 'partners' ? 'text-primary font-bold' : 'text-on-surface-variant' %>" href="/cozum-ortaklarimiz">Çözüm Ortaklarımız</a>
+    <a class="block font-label-md py-2 <%= activePage === 'contact' ? 'text-primary font-bold' : 'text-on-surface-variant' %>" href="/iletisim">İletişim</a>
+    <a href="tel:05355041939" class="block text-primary font-bold py-2">0 535 504 19 39</a>
+  </div>
+</header>

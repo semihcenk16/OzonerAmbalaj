@@ -1,0 +1,6 @@
+node_modules/
+.env
+public/uploads/*
+!public/uploads/.gitkeep
+stitch_ozone_ambalaj_modern_redesign/
+stitch_ozone_ambalaj_modern_redesign.zip

@@ -1,0 +1,107 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="min-h-screen">
+  <section class="relative h-[300px] md:h-[409px] flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img class="w-full h-full object-cover" alt="OZONER tesis" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM1JbsyDp8tkcTwG-_8gie2MQt2zLQU9v_YgZs2QSfw61qjSBuXQhk60_9o35x-kTI5s5B_wjkKuKAJ4UmwcfTcA53pDT1gB5Are_wv2EzvMnddGlZSQvJetI62wKo6zk8NaIbzbQK6E58whXCY-URZcoRQsPLWFNrF0vj1O424bF9QbtMWvyQsnroQr2WG6xuyEyjZ3CjRnM2ZiR3zSwQuqLdn8yu9Yz9q6haU4ypOMEWzZhASTrbnhuWTVJeVygak8hemhRpQSo"/>
+      <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+    </div>
+    <div class="relative z-10 px-margin-desktop max-w-container-max mx-auto w-full">
+      <h1 class="font-headline-xl text-3xl md:text-headline-xl text-white drop-shadow-lg">Bizimle İletişime Geçin</h1>
+      <p class="font-body-lg text-white/90 max-w-2xl mt-4">1988'den beri endüstriyel çözüm ortağınız.</p>
+    </div>
+  </section>
+
+  <section class="px-margin-desktop py-margin-desktop max-w-container-max mx-auto">
+    <% if (success) { %>
+    <div class="mb-8 bg-status-success/10 border border-status-success text-status-success px-6 py-4 rounded-lg flex items-center gap-3">
+      <span class="material-symbols-outlined">check_circle</span>
+      Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.
+    </div>
+    <% } %>
+    <% if (typeof error !== 'undefined' && error) { %>
+    <div class="mb-8 bg-red-50 border border-error text-error px-6 py-4 rounded-lg"><%= error %></div>
+    <% } %>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop">
+      <div class="lg:col-span-7 bg-white p-8 md:p-10 border border-outline-variant shadow-sm rounded">
+        <h2 class="font-headline-md text-headline-md text-primary mb-8">İletişim Formu</h2>
+        <form class="space-y-6" method="POST" action="/iletisim">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-2">
+              <label class="font-label-md text-on-surface-variant" for="name">Ad Soyad *</label>
+              <input class="border border-outline px-4 py-3 rounded focus:ring-2 focus:ring-primary bg-surface-industrial/30" id="name" name="name" required type="text" value="<%= typeof form !== 'undefined' && form ? form.name : '' %>" placeholder="Adınız Soyadınız"/>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="font-label-md text-on-surface-variant" for="email">E-posta *</label>
+              <input class="border border-outline px-4 py-3 rounded focus:ring-2 focus:ring-primary bg-surface-industrial/30" id="email" name="email" required type="email" value="<%= typeof form !== 'undefined' && form ? form.email : '' %>" placeholder="ornek@mail.com"/>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label-md text-on-surface-variant" for="subject">Konu</label>
+            <input class="border border-outline px-4 py-3 rounded focus:ring-2 focus:ring-primary bg-surface-industrial/30" id="subject" name="subject" type="text" value="<%= typeof form !== 'undefined' && form ? form.subject : '' %>" placeholder="İletişim Sebebiniz"/>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label-md text-on-surface-variant" for="message">Mesajınız *</label>
+            <textarea class="border border-outline px-4 py-3 rounded focus:ring-2 focus:ring-primary bg-surface-industrial/30" id="message" name="message" required rows="5" placeholder="Size nasıl yardımcı olabiliriz?"><%= typeof form !== 'undefined' && form ? form.message : '' %></textarea>
+          </div>
+          <button class="bg-primary text-on-primary px-10 py-4 rounded font-bold hover:opacity-90 transition-all flex items-center gap-3" type="submit">
+            Gönder <span class="material-symbols-outlined text-[20px]">send</span>
+          </button>
+        </form>
+      </div>
+
+      <div class="lg:col-span-5 flex flex-col gap-gutter-desktop">
+        <div class="bg-white p-8 md:p-10 border border-outline-variant shadow-sm rounded h-full">
+          <h3 class="font-headline-md text-primary mb-8 border-b-2 border-primary w-fit pb-2">İletişim Bilgileri</h3>
+          <div class="space-y-8">
+            <div class="flex gap-6">
+              <div class="bg-primary-container/20 p-3 rounded-full h-fit"><span class="material-symbols-outlined text-primary">location_on</span></div>
+              <div>
+                <p class="font-label-md text-primary mb-1">Adres</p>
+                <p class="text-on-surface-variant leading-relaxed">Işıktepe Mh. Fırat (250) Sk. NO: 4A/1<br/>Nilüfer / BURSA</p>
+              </div>
+            </div>
+            <div class="flex gap-6">
+              <div class="bg-primary-container/20 p-3 rounded-full h-fit"><span class="material-symbols-outlined text-primary">phone_iphone</span></div>
+              <div>
+                <p class="font-label-md text-primary mb-1">Telefon</p>
+                <a class="text-on-surface-variant hover:text-primary text-lg font-medium" href="tel:05355041939">0 535 504 19 39</a>
+              </div>
+            </div>
+            <div class="flex gap-6">
+              <div class="bg-primary-container/20 p-3 rounded-full h-fit"><span class="material-symbols-outlined text-primary">alternate_email</span></div>
+              <div>
+                <p class="font-label-md text-primary mb-1">E-posta</p>
+                <a class="text-on-surface-variant hover:text-primary font-medium" href="mailto:satis@ozonerambalaj.com">satis@ozonerambalaj.com</a>
+              </div>
+            </div>
+            <div class="flex gap-6">
+              <div class="bg-primary-container/20 p-3 rounded-full h-fit"><span class="material-symbols-outlined text-primary">schedule</span></div>
+              <div>
+                <p class="font-label-md text-primary mb-1">Çalışma Saatleri</p>
+                <p class="text-on-surface-variant">Pazartesi – Cumartesi<br/>08:00 – 18:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-margin-desktop pb-margin-desktop max-w-container-max mx-auto">
+    <div class="bg-white border border-outline-variant p-4 rounded shadow-sm overflow-hidden">
+      <iframe
+        title="OZONER Endüstriyel Ambalaj Konumu"
+        class="w-full h-[400px] md:h-[450px] rounded"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Ozoner+Endüstriyel+Ambalaj@40.2287986,28.9600855&amp;hl=tr&amp;z=18&amp;output=embed">
+      </iframe>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "name": "Unilever",
+    "slug": "unilever",
+    "logo_url": "/uploads/1782494771762-641572423.png",
+    "sort_order": 1,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.611Z"
+  },
+  {
+    "id": 2,
+    "name": "Hayat",
+    "slug": "hayat",
+    "logo_url": "/uploads/1782494734949-698732835.jpg",
+    "sort_order": 2,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.612Z"
+  },
+  {
+    "id": 3,
+    "name": "Focus",
+    "slug": "focus",
+    "logo_url": "/uploads/1782494690023-525422134.png",
+    "sort_order": 3,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.613Z"
+  },
+  {
+    "id": 4,
+    "name": "Domestos",
+    "slug": "domestos",
+    "logo_url": "/uploads/1782494637872-925371741.png",
+    "sort_order": 4,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.613Z"
+  },
+  {
+    "id": 5,
+    "name": "Lipton",
+    "slug": "lipton",
+    "logo_url": "/uploads/1782494603164-229938755.png",
+    "sort_order": 5,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.614Z"
+  },
+  {
+    "id": 6,
+    "name": "Nestle",
+    "slug": "nestle",
+    "logo_url": "/uploads/1782494550096-124634306.jpg",
+    "sort_order": 6,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.615Z"
+  },
+  {
+    "id": 7,
+    "name": "Diversey",
+    "slug": "diversey",
+    "logo_url": "/uploads/1782494319775-302767516.png",
+    "sort_order": 7,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.616Z"
+  },
+  {
+    "id": 8,
+    "name": "Dolphin",
+    "slug": "dolphin",
+    "logo_url": "/uploads/1782494475468-187564389.png",
+    "sort_order": 8,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.616Z"
+  },
+  {
+    "id": 9,
+    "name": "AkkaPlast",
+    "slug": "akkaplast",
+    "logo_url": "/uploads/1782494242671-888894096.jpg",
+    "sort_order": 9,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.617Z"
+  },
+  {
+    "id": 10,
+    "name": "Lindera",
+    "slug": "lindera",
+    "logo_url": "/uploads/1782494025466-644634078.webp",
+    "sort_order": 10,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.617Z"
+  },
+  {
+    "id": 11,
+    "name": "Kurukahveci Mehmet Efendi",
+    "slug": "kurukahveci-mehmet-efendi",
+    "logo_url": "/uploads/1782494433795-478098675.jpg",
+    "sort_order": 11,
+    "is_active": 1,
+    "created_at": "2026-06-26T14:00:00.618Z"
+  },
+  {
+    "id": 12,
+    "name": "Cif",
+    "logo_url": "/uploads/1782493888152-336830244.jpg",
+    "sort_order": 12,
+    "is_active": 1,
+    "created_at": "2026-06-26T17:11:28.155Z"
+  }
+]

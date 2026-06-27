@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Mop Grubu & Temizlik Bezleri",
+    "badge": "PROFESYONEL ÇÖZÜMLER",
+    "description": "Endüstriyel temizlik standartlarını yeniden tanımlayan yüksek kaliteli mop sistemleri ve mikrofiber teknolojileri.",
+    "image_url": "https://ozonerambalaj.com/Content/img/slider_mop.webp",
+    "button_text": "Ürünleri Keşfet",
+    "button_link": "/urunler?kategori=Mop%20Grubu",
+    "subtitle": "PROFESYONEL ÇÖZÜMLER",
+    "sort_order": 1,
+    "is_active": 1
+  },
+  {
+    "id": 2,
+    "title": "Temizlik Setleri",
+    "badge": "KOMPLE ÇÖZÜMLER",
+    "description": "Kova, mop ve sıkma aparatından oluşan profesyonel temizlik setleri ile verimliliği artırın.",
+    "image_url": "https://ozonerambalaj.com/Content/img/slider_set.webp",
+    "button_text": "Ürünleri İncele",
+    "button_link": "/urunler?kategori=Temizlik%20Setleri",
+    "subtitle": "KOMPLE ÇÖZÜMLER",
+    "sort_order": 2,
+    "is_active": 1
+  },
+  {
+    "id": 3,
+    "title": "Deterjan Grubu",
+    "badge": "HİJYEN STANDARTLARI",
+    "description": "Yüzey temizleyiciler, yağ çözücüler ve genel temizlik kimyasalları ile profesyonel hijyen.",
+    "image_url": "https://ozonerambalaj.com/Content/img/slider_deterjan.webp",
+    "button_text": "Ürünleri Keşfet",
+    "button_link": "/urunler?kategori=Deterjan%20Grubu",
+    "subtitle": "HİJYEN STANDARTLARI",
+    "sort_order": 3,
+    "is_active": 1
+  },
+  {
+    "id": 4,
+    "title": "Çöp Torbaları",
+    "badge": "AMBALAJ ÇÖZÜMLERİ",
+    "description": "Mini boydan endüstriyel battal boya kadar her hacme uygun dayanıklı torbalar.",
+    "image_url": "https://ozonerambalaj.com/Content/img/slider_coptorbalari.webp",
+    "button_text": "Ürünleri İncele",
+    "button_link": "/urunler?kategori=%C3%87%C3%B6p%20Torbalar%C4%B1",
+    "subtitle": "AMBALAJ ÇÖZÜMLERİ",
+    "sort_order": 4,
+    "is_active": 1
+  },
+  {
+    "id": 5,
+    "title": "Endüstriyel Aparatlar",
+    "badge": "PROFESYONEL EKİPMAN",
+    "description": "Kağıt havlu dispanserleri, sabunluklar ve hijyen üniteleri ile işletmenize profesyonel çözümler.",
+    "image_url": "https://ozonerambalaj.com/Content/img/slider_aparat.webp",
+    "button_text": "Ürünleri Keşfet",
+    "button_link": "/urunler?kategori=End%C3%BCstriyel%20Aparat%20Grubu",
+    "subtitle": "PROFESYONEL EKİPMAN",
+    "sort_order": 5,
+    "is_active": 1
+  }
+]

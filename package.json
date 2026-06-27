@@ -1,0 +1,22 @@
+{
+  "name": "ozoner-ambalaj",
+  "version": "1.0.0",
+  "description": "OZONER Endüstriyel & Ambalaj - Dinamik Web Sitesi",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18 <=22"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "sync": "node scripts/sync-from-ozoner.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
